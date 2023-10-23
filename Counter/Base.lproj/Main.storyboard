@@ -80,8 +80,8 @@
                         <color key="backgroundColor" red="1" green="0.41176470588235292" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="counter" destination="5qv-62-Mbg" id="br7-s7-sTM"/>
-                        <outlet property="historyOfCounting" destination="dt2-cN-gpS" id="5VJ-CH-o2e"/>
+                        <outlet property="counterLabel" destination="5qv-62-Mbg" id="uZX-6P-ba3"/>
+                        <outlet property="historyOfCountingTextView" destination="dt2-cN-gpS" id="07b-lE-Gjg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

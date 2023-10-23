@@ -7,46 +7,48 @@
 
 import UIKit
 
-func date() -> String {
-    let date = Date()
-    let format = DateFormatter()
-    format.dateFormat = "yyyy-MM-dd HH:mm:ss"
-    let dateString = format.string(from: date)
-    return dateString
-}
-
-
 class ViewController: UIViewController {
-    var firstNumber: Int = 0
-    @IBOutlet weak var historyOfCounting: UITextView!
-    @IBOutlet weak var counter: UILabel!
-    @IBAction func counterButton(_ sender: Any) {
-        firstNumber += 1
-        counter.text = "Значение счётчика: \(firstNumber)"
-        historyOfCounting.text.append("\(date()) : значение изменено на +1\n")
+    @IBOutlet private weak var historyOfCountingTextView: UITextView!
+    @IBOutlet private weak var counterLabel: UILabel!
+    
+    
+    private var firstNumber: Int = 0
+    
+    
+    override func viewDidLoad() {
+            super.viewDidLoad()
+            counterLabel.text = "Значение счётчика: 0"
+            historyOfCountingTextView.text = "История изменений:\n\n"
         }
     
-    @IBAction func minusCounterButton(_ sender: Any) {
+    
+    private func date() -> String {
+       let date = Date()
+       let format = DateFormatter()
+       format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+       let dateString = format.string(from: date)
+       return dateString
+   }
+    
+    
+    @IBAction private func counterButton(_ sender: Any) {
+            firstNumber += 1
+            counterLabel.text = "Значение счётчика: \(firstNumber)"
+            historyOfCountingTextView.text.append("\(date()) : значение изменено на +1\n")
+            }
+    @IBAction private func minusCounterButton(_ sender: Any) {
         if firstNumber > 0 {
             firstNumber -= 1
-            counter.text = "Значение счётчика: \(firstNumber)"
-            historyOfCounting.text.append("\(date()) : значение изменено на -1\n")
+            counterLabel.text = "Значение счётчика: \(firstNumber)"
+            historyOfCountingTextView.text.append("\(date()) : значение изменено на -1\n")
         } else {
-            historyOfCounting.text.append("\(date()) : попытка уменьшить значение счётчика ниже 0\n")
+            historyOfCountingTextView.text.append("\(date()) : попытка уменьшить значение счётчика ниже 0\n")
         }
-            
-        
     }
-    @IBAction func resetCounterButton(_ sender: Any) {
+    @IBAction private func resetCounterButton(_ sender: Any) {
         firstNumber = 0
-        counter.text = "Значение счётчика: \(firstNumber)"
-        historyOfCounting.text.append("\(date()) : значение сброшено\n")
+        counterLabel.text = "Значение счётчика: \(firstNumber)"
+        historyOfCountingTextView.text.append("\(date()) : значение сброшено\n")
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        counter.text = "Значение счётчика: 0"
-        historyOfCounting.text = "История изменений:\n\n"
-    }
-    
 }
 
